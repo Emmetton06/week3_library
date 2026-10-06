@@ -50,15 +50,6 @@ namespace Library
             }
         }
           
-
-
-
-
-
-
-
-
-
         public string Address
         {
             get { return address; }

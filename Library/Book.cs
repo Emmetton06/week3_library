@@ -46,13 +46,12 @@ namespace Library
         // Constructor
         public Book(string bookTitle, string bookAuthor, int bookISBN)
         {
-            _title = bookTitle;
-            _author = bookAuthor;
-            _isbn = bookISBN;
+            this.Title = bookTitle;
+            this.Author = bookAuthor;
+            this.ISBN = bookISBN;
         }
 
         // Methods 
-
         public void DisplayInfo()
         {
             Console.WriteLine($"Book title: {Title}");

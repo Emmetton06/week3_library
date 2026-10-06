@@ -1,19 +1,22 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Library
 {
-    public class Book
+    class Book
     {
-        // Private fields
-        private string _title;
-        private string _author;
-        private string _isbn; // Changed from int to string
+        private string _title; // private field
+        private string _author;// private field
+        private int _isbn; // private field
 
-        // Public properties
+        // Title property allows access
+        // to the title private field
         public string Title
         {
-            get { return _title; }
+            get { return _title; }  // get method
             set
             {
                 if (!value.Any(char.IsDigit))
@@ -22,54 +25,55 @@ namespace Library
                 }
                 else
                 {
-                    Console.WriteLine("Error: Cannot enter number for title.");
+                    Console.WriteLine("Cannot enter a number for title");
                 }
             }
         }
-
+           
         public string Author
         {
             get { return _author; }
             set
             {
-                if (!value.Any(char.IsDigit))
+                if (value.Any(char.IsDigit))
                 {
                     _author = value;
                 }
                 else
                 {
-                    Console.WriteLine("Error: Author name cannot contain numbers.");
+                    Console.WriteLine("Cannot enter a number for author");
                 }
             }
         }
 
-        public string ISBN
+        public int ISBN
         {
-            get { return _isbn; } // Fixed: Use backing field
+            get { return _isbn; }
             set
             {
-                // Fixed: Better validation for null or empty spaces
-                if (!string.IsNullOrWhiteSpace(value))
+                if (value.ToString().Any(char.IsDigit))
                 {
-                    _isbn = value; // Fixed: Use backing field
+                    _isbn = value;
                 }
                 else
                 {
-                    Console.WriteLine("Error: ISBN cannot be blank.");
+                    Console.WriteLine("Cannot enter a letter for ISBN");
                 }
             }
-        }
+                 
+            }
+                       
+          
 
-        // Constructor
-        // Fixed: bookISBN parameter changed to string to match the property
-        public Book(string bookTitle, string bookAuthor, string bookISBN)
+        // Constructor to add a new book
+        public Book(string bookTitle, string bookAuthor, int bookISBN)
         {
             this.Title = bookTitle;
             this.Author = bookAuthor;
             this.ISBN = bookISBN;
         }
 
-        // Methods 
+        // Method to display information about a book
         public void DisplayInfo()
         {
             Console.WriteLine($"Book title: {Title}");

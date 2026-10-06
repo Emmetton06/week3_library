@@ -1,32 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library
 {
-     public class Book
+    public class Book
     {
         // Private fields
         private string _title;
         private string _author;
-        private int _isbn;
+        private string _isbn; // Changed from int to string
 
         // Public properties
         public string Title
         {
             get { return _title; }
-            set 
+            set
             {
-                // Check if any incoming char is a digit
                 if (!value.Any(char.IsDigit))
                 {
                     _title = value;
                 }
                 else
                 {
-                    Console.WriteLine("Cannot enter number for title");
+                    Console.WriteLine("Error: Cannot enter number for title.");
                 }
             }
         }
@@ -34,17 +30,39 @@ namespace Library
         public string Author
         {
             get { return _author; }
-            set { _author = value; }
+            set
+            {
+                if (!value.Any(char.IsDigit))
+                {
+                    _author = value;
+                }
+                else
+                {
+                    Console.WriteLine("Error: Author name cannot contain numbers.");
+                }
+            }
         }
 
-        public int ISBN
+        public string ISBN
         {
-            get { return _isbn; }
-            set { _isbn = value; }
+            get { return _isbn; } // Fixed: Use backing field
+            set
+            {
+                // Fixed: Better validation for null or empty spaces
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    _isbn = value; // Fixed: Use backing field
+                }
+                else
+                {
+                    Console.WriteLine("Error: ISBN cannot be blank.");
+                }
+            }
         }
-        
+
         // Constructor
-        public Book(string bookTitle, string bookAuthor, int bookISBN)
+        // Fixed: bookISBN parameter changed to string to match the property
+        public Book(string bookTitle, string bookAuthor, string bookISBN)
         {
             this.Title = bookTitle;
             this.Author = bookAuthor;
@@ -58,7 +76,6 @@ namespace Library
             Console.WriteLine($"Book Author: {Author}");
             Console.WriteLine($"Book ISBN: {ISBN}");
             Console.WriteLine();
-
-       }
+        }
     }
 }

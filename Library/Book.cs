@@ -6,20 +6,21 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    public class Book
+     public class Book
     {
-        string Title;
-        string Author;
-        string ISBN;
+        public string Title;
+        public string Author;
+        public int ISBN;
 
-        public Book(string bookTitle, string bookAuthor, string bookISBN)
+        // Paramaterised constructor
+        public Book(string bookTitle, string bookAuthor, int bookISBN)
         {
-            this.Title = bookTitle;
-            this.Author = bookAuthor;
-            this.ISBN = bookISBN;
+            Title = bookTitle;
+            Author = bookAuthor;
+            ISBN = bookISBN;
         }
 
-        void DisplayInfo()
+        public void DisplayInfo()
         {
             Console.WriteLine($"Book title: {Title}");
             Console.WriteLine($"Book Author: {Author}");

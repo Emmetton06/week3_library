@@ -14,8 +14,13 @@ class Program
         Console.WriteLine("Current library members");
         member.DisplayInfo();
         member1.DisplayInfo();
+
+        // Testing the validation logic with invalid data
+        Member invalidMember = new Member(-5, "Rob0t C0p", "50 Main Street", 078112233);
     }
 }
+
+
 
 
 
